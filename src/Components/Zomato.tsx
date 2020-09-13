@@ -44,13 +44,20 @@ class Zomato extends Component<ZomatoProps, ZomatoState> {
             {/* <h3>{this.state.zomatoInformation.map}</h3> */}
            <div>
                <h1>Restaurants in Your Area</h1>
+               <ul>
                {this.state.zomatoInformation.length > 0 ? (
                    this.state.zomatoInformation.map(
                        (restaurant: any, index: number) => (
-                          <p> {restaurant.restaurant.name} </p>
+                          <li> <h3> {restaurant.restaurant.name} </h3>
+                          <p>Cuisine: {restaurant.restaurant.cuisines}</p>
+                          <p>Rating: {restaurant.restaurant.user_rating.aggregate_rating}</p>
+                       <p>Location: {restaurant.restaurant.location.address}</p>
+                          </li>
+                          
                        ) 
                    ) 
                        ) : <> </> }
+                </ul>
                
            </div>
         </div> );
