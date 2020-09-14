@@ -38,10 +38,6 @@ class Zomato extends Component<ZomatoProps, ZomatoState> {
 
     render() { 
         return ( <div>
-            <h1>Zomato Element</h1>
-            <h2>Latitude: {this.props.latitude}</h2>
-            <h2>Longitude: {this.props.longitude}</h2>
-            {/* <h3>{this.state.zomatoInformation.map}</h3> */}
            <div>
                <h1>Restaurants in Your Area</h1>
                <ul>
