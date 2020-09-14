@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Weather from './Weather';
+
 
 function App() {
+  
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  useEffect(() =>{
+    setLatitude(39.8475)
+    setLongitude(86.2057)
+  }, []);
+
+  const weatherURL=`https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=089d47cbdc7d06d1a6c02d626f883233`
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ 
+    <div>
+      <Weather weatherURL={weatherURL} longitude={longitude} latitude={latitude}/>
+     
     </div>
   );
 }
