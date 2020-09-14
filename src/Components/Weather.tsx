@@ -17,7 +17,7 @@ class Weather extends React.Component<WeatherProps, WeatherState> {
         this.state = { weatherInformation: 0, tempConversion: "k", displayedTemp: 'Kelvin'};
 }
 componentDidMount() {
-    console.log(this.props.weatherURL)
+    
     fetch(this.props.weatherURL, {
         method: "GET",
         mode: "cors",
@@ -32,6 +32,7 @@ componentDidMount() {
         kelvinTemp = json.main.temp;
         
 });
+
 }
 
 toCelsius = () => {
@@ -57,7 +58,7 @@ render() {
                 <div>
                    
         {this.state.weatherInformation !== '' ? (<div><h2>Temperature in Your Area: {this.state.weatherInformation} {this.state.displayedTemp}</h2> <button onClick={this.toCelsius}>Celsius</button><button onClick={this.toFahrenheit}>Fahrenheit</button><button onClick={this.toKelvin}>Kelvin</button></div>) : <></> }
-                    
+        <h1>Weather API lat: {this.props.latitude} and lon: {this.props.longitude}</h1>    
                 </div>
             </>
         );

@@ -19,7 +19,8 @@ class Zomato extends Component<ZomatoProps, ZomatoState> {
         this.state = { zomatoInformation:  []};
     }
 
-    componentDidMount() {
+    componentDidUpdate(prevProps: ZomatoProps) {
+        if (this.props.latitude !== prevProps.latitude || (this.props.longitude !== prevProps.longitude)){
         console.log(`${this.props.zomatoURL}lat=${this.props.latitude}&lon=${this.props.longitude}`)
         fetch(`${this.props.zomatoURL}lat=${this.props.latitude}&lon=${this.props.longitude}`, {
         method: "GET",
@@ -35,6 +36,7 @@ class Zomato extends Component<ZomatoProps, ZomatoState> {
             console.log(this.state.zomatoInformation)
         })
     }
+}
 
     render() { 
         return ( <div>
