@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
+import NASA from './components/NASA'
 import './App.css';
 
 function App() {
+
+  let latitude : number = 41.5812;
+  let longitude : number = -85.83;
+
+  const NASAurl = `https://api.nasa.gov/planetary/earth/imagery?lon=${longitude}&lat=${latitude}&date=${Date}&api_key=p5Hq5QSiTwyT5KkDnyyLzZcX5NcELbtPl3a0jcSa`
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NASA NASAurl={NASAurl} longitude={longitude} latitude = {latitude} />
     </div>
   );
 }
