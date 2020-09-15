@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 let kelvinTemp: any;
 export interface WeatherProps {
@@ -52,12 +53,12 @@ render() {
                 <div>
                    
         {this.state.weatherInformation !== '' ? (<div>
-            <h2>Temperature in Your Area: {this.state.weatherInformation} {this.state.displayedTemp}</h2> <button onClick={this.toCelsius}>Celsius</button>
-            <button onClick={this.toFahrenheit}>Fahrenheit</button>
-            <button onClick={this.toKelvin}>Kelvin</button>
+            <h2>Temperature in Your Area: {this.state.weatherInformation} {this.state.displayedTemp}</h2> <Button onClick={this.toCelsius}>Celsius</Button>
+            <Button onClick={this.toFahrenheit}>Fahrenheit</Button>
+            <Button onClick={this.toKelvin}>Kelvin</Button>
         </div>) : <></> }
-        <h1>Weather API lat: {this.props.latitude} and lon: {this.props.longitude}</h1>    
-                </div>
+        
+                        </div>
             </>
         );
     }

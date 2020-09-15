@@ -1,3 +1,24 @@
 body {
-  background-image: linear-gradient(navy, lightblue, green, brown)
+  background-image: linear-gradient(#130f40, #130f40, #01579B, #33691E, #3E2723, #3E2723);
+  margin-left: 5em;
+  margin-right: 5em;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color: black;
+  font-size: 25pt;
+}
+
+footer {
+  color: white;
+  float: right;
+  font-weight: bold;
+}
+
+#nasaDisplay {
+  background-image: url('assets/sky.png');
 }
