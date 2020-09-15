@@ -28,6 +28,7 @@ class NASA extends React.Component<NASAProps, NASAState> {
 
     render() { 
         return (<div>
+            <h2>NASA View:</h2>
             <img src={this.state.NASAInfo} style={{maxWidth: "25%"}} alt="NASA"/>
         </div>  );
     }
