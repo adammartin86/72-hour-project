@@ -2,13 +2,13 @@ import React from 'react';
 
 let kelvinTemp: any;
 export interface WeatherProps {
-    weatherURL: string
-    latitude: number
+    weatherURL: string;
+    latitude: number;
     longitude: number
 }
 export interface WeatherState {
-    weatherInformation: any
-    tempConversion: any
+    weatherInformation: any;
+    tempConversion: any;
     displayedTemp: any
 }
 class Weather extends React.Component<WeatherProps, WeatherState> {
@@ -16,15 +16,9 @@ class Weather extends React.Component<WeatherProps, WeatherState> {
     super(props);
         this.state = { weatherInformation: 0, tempConversion: "k", displayedTemp: 'Kelvin'};
 }
-componentDidMount() {
-    
-    fetch(this.props.weatherURL, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            'Content-Type': "application/json",
-        }
-    })
+componentDidUpdate(prevProps: WeatherProps) {
+    if ((this.props.latitude !== prevProps.latitude) || (this.props.longitude !== prevProps.longitude)) {
+    fetch(this.props.weatherURL)
         .then(res => res.json())
         .then((json) => {
         this.setState({ weatherInformation: json.main.temp })
@@ -32,7 +26,7 @@ componentDidMount() {
         kelvinTemp = json.main.temp;
         
 });
-
+    }
 }
 
 toCelsius = () => {
@@ -57,7 +51,11 @@ render() {
             <>
                 <div>
                    
-        {this.state.weatherInformation !== '' ? (<div><h2>Temperature in Your Area: {this.state.weatherInformation} {this.state.displayedTemp}</h2> <button onClick={this.toCelsius}>Celsius</button><button onClick={this.toFahrenheit}>Fahrenheit</button><button onClick={this.toKelvin}>Kelvin</button></div>) : <></> }
+        {this.state.weatherInformation !== '' ? (<div>
+            <h2>Temperature in Your Area: {this.state.weatherInformation} {this.state.displayedTemp}</h2> <button onClick={this.toCelsius}>Celsius</button>
+            <button onClick={this.toFahrenheit}>Fahrenheit</button>
+            <button onClick={this.toKelvin}>Kelvin</button>
+        </div>) : <></> }
         <h1>Weather API lat: {this.props.latitude} and lon: {this.props.longitude}</h1>    
                 </div>
             </>
